@@ -1,11 +1,11 @@
-About autodoc-traits
-====================
+About autodoc-traits-feedstock
+==============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/autodoc-traits-feedstock/blob/main/LICENSE.txt)
 
 Home: https://pypi.org/project/autodoc-traits
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/autodoc-traits-feedstock/blob/main/LICENSE.txt)
 
 Summary: Sphinx extension to autodoc traitlets
 

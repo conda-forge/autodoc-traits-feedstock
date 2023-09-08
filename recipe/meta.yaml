@@ -1,4 +1,4 @@
-{% set version = "1.1.0" %}
+{% set version = "1.2.0" %}
 
 package:
   name: autodoc-traits
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/a/autodoc-traits/autodoc_traits-{{ version }}.tar.gz
-  sha256: 2e2244b3b5adaa11874e56a5f2ca1d7b413b60305d45b337a7c634fc2a66dfb8
+  sha256: 1a6d50a43374e88fba5e75bb462eb57afd4814462b860aa99313056120f982f3
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
@@ -20,7 +20,7 @@ requirements:
     - python >=3.7
   run:
     - python >=3.7
-    - sphinx >=2
+    - sphinx >=4
     - traitlets >=4
 
 test:
