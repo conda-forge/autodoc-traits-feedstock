@@ -21,7 +21,7 @@ requirements:
   run:
     - python >=3.7
     - sphinx >=4
-    - traitlets >=4
+    - traitlets >=4,<5.10
 
 test:
   source_files:
