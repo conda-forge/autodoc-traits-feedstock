@@ -31,12 +31,10 @@ test:
   commands:
     - pip check
     # skipped on windows due to unix-style paths in tests
-    - coverage run --branch --source=autodoc_traits -m pytest -vv --color=yes --tb=long  # [unix]
-    - coverage report --show-missing --skip-covered --fail-under=100                     # [unix]
-  requires:
-    - coverage
+    - pytest -vv --cov=autodoc_traits --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=100  # [unix]
+    requires:
     - pip
-    - pytest
+    - pytest-cov
 
 about:
   home: https://pypi.org/project/autodoc-traits
