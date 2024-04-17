@@ -1,4 +1,4 @@
-{% set version = "1.2.1" %}
+{% set version = "1.2.2" %}
 
 package:
   name: autodoc-traits
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/a/autodoc-traits/autodoc_traits-{{ version }}.tar.gz
-  sha256: 9fbc526729453a017d01885dd3eb43b5dfbc5fa76fb9c3ed10c7bb818ea0071d
+  sha256: a42bc8a78fe95cffb84bdb30b301368347442666ae6f9543304c566761d6a91c
 
 build:
   noarch: python
@@ -21,7 +21,7 @@ requirements:
   run:
     - python >=3.7
     - sphinx >=4
-    - traitlets >=4,<5.10
+    - traitlets >=4
 
 test:
   source_files:
@@ -31,7 +31,7 @@ test:
   commands:
     - pip check
     # skipped on windows due to unix-style paths in tests
-    - pytest -vv --cov=autodoc_traits --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=97  # [unix]
+    - pytest -vv --cov=autodoc_traits --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=100  # [unix]
   requires:
     - pip
     - pytest-cov
