@@ -5,21 +5,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/a/autodoc-traits/autodoc_traits-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/a/autodoc-traits/autodoc_traits-{{ version }}.tar.gz
   sha256: a42bc8a78fe95cffb84bdb30b301368347442666ae6f9543304c566761d6a91c
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
     - hatchling
     - pip
-    - python >=3.7
+    - python {{ python_min }}
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - sphinx >=4
     - traitlets >=4
 
@@ -35,6 +35,7 @@ test:
   requires:
     - pip
     - pytest-cov
+    - python {{ python_min }}
 
 about:
   home: https://pypi.org/project/autodoc-traits
