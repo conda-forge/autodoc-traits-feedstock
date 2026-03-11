@@ -1,4 +1,4 @@
-{% set version = "1.2.2" %}
+{% set version = "1.3.0" %}
 
 package:
   name: autodoc-traits
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/a/autodoc-traits/autodoc_traits-{{ version }}.tar.gz
-  sha256: a42bc8a78fe95cffb84bdb30b301368347442666ae6f9543304c566761d6a91c
+  sha256: 5b21a5fb447680bcbdec99b477110b40ab2c2dfc6d84e459cc002516d15cae22
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
