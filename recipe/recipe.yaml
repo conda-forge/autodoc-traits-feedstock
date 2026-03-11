@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  version: "1.3.0"
+  python_check_max: "3.14"
+
+package:
+  name: autodoc-traits
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/a/autodoc-traits/autodoc_traits-${{ version }}.tar.gz
+  sha256: 5b21a5fb447680bcbdec99b477110b40ab2c2dfc6d84e459cc002516d15cae22
+
+build:
+  number: 0
+  noarch: python
+  script:
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+
+requirements:
+  host:
+    - hatchling
+    - pip
+    - python ${{ python_min }}.*
+  run:
+    - python >=${{ python_min }}
+    - sphinx >=6
+    - traitlets >=4
+
+tests:
+  - python:
+      imports: autodoc_traits
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - ${{ python_check_max }}.*
+  - files:
+      source:
+        - tests/
+    requirements:
+      run:
+        - pytest-cov
+        - python ${{ python_min }}.*
+    script:
+      - if: unix
+        then:
+          - echo "tool.coverage.run.patch = ['subprocess']" > pyproject.toml
+          - coverage run --source=autodoc_traits --branch -m pytest -vv --tb=long --color=yes
+          - coverage combine
+          - coverage report --show-missing --skip-covered --fail-under=100
+
+about:
+  summary: Sphinx extension to autodoc traitlets
+  license: BSD-3-Clause
+  license_file: LICENSE
+  homepage: https://pypi.org/project/autodoc-traits
+  repository: https://github.com/jupyterhub/autodoc-traits
+
+extra:
+  recipe-maintainers:
+    - bollwyvl
