@@ -46,8 +46,10 @@ tests:
     script:
       - if: unix
         then:
+          - echo "tool.coverage.run.patch = ['subprocess']" > pyproject.toml
           - coverage run --source=autodoc_traits --branch -m pytest -vv --tb=long --color=yes
-          - coverage report --show--missing --skip-covered --fail-under=100
+          - coverage combine
+          - coverage report --show-missing --skip-covered --fail-under=100
 
 about:
   summary: Sphinx extension to autodoc traitlets
